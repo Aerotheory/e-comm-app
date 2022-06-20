@@ -13,7 +13,6 @@ export function useCart() {
 export function getCartId({
     req,
     res,
-
 }: {
     req: IncomingMessage & {
         cookies: NextApiRequestCookies;
@@ -23,9 +22,7 @@ export function getCartId({
     let cartId = getCookie("cartId", { req, res });
     if (!cartId) {
         const id = uuid();
-        setCookies("cartId", id, {
-            req, res
-        });
+        setCookies("cartId", id, { req, res });
         cartId = id;
     }
     return String(cartId);

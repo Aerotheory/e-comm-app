@@ -105,7 +105,7 @@ export type MutationIncreaseCartItemArgs = {
 
 
 export type MutationRemoveItemArgs = {
-  input: RemoveFromCart;
+  input: RemoveFromCartInput;
 };
 
 export type Query = {
@@ -118,7 +118,7 @@ export type QueryCartArgs = {
   id: Scalars['ID'];
 };
 
-export type RemoveFromCart = {
+export type RemoveFromCartInput = {
   cartId: Scalars['ID'];
   id: Scalars['ID'];
 };
@@ -221,7 +221,7 @@ export type ResolversTypes = {
   Money: ResolverTypeWrapper<Money>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
-  RemoveFromCart: RemoveFromCart;
+  RemoveFromCartInput: RemoveFromCartInput;
   String: ResolverTypeWrapper<Scalars['String']>;
 };
 
@@ -240,7 +240,7 @@ export type ResolversParentTypes = {
   Money: Money;
   Mutation: {};
   Query: {};
-  RemoveFromCart: RemoveFromCart;
+  RemoveFromCartInput: RemoveFromCartInput;
   String: Scalars['String'];
 };
 
@@ -348,9 +348,9 @@ export type AddToCartMutationFn = Apollo.MutationFunction<AddToCartMutation, Add
  * });
  */
 export function useAddToCartMutation(baseOptions?: Apollo.MutationHookOptions<AddToCartMutation, AddToCartMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<AddToCartMutation, AddToCartMutationVariables>(AddToCartDocument, options);
-      }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useMutation<AddToCartMutation, AddToCartMutationVariables>(AddToCartDocument, options);
+}
 export type AddToCartMutationHookResult = ReturnType<typeof useAddToCartMutation>;
 export type AddToCartMutationResult = Apollo.MutationResult<AddToCartMutation>;
 export type AddToCartMutationOptions = Apollo.BaseMutationOptions<AddToCartMutation, AddToCartMutationVariables>;
@@ -379,13 +379,13 @@ export const GetCartDocument = gql`
  * });
  */
 export function useGetCartQuery(baseOptions: Apollo.QueryHookOptions<GetCartQuery, GetCartQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetCartQuery, GetCartQueryVariables>(GetCartDocument, options);
-      }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetCartQuery, GetCartQueryVariables>(GetCartDocument, options);
+}
 export function useGetCartLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCartQuery, GetCartQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetCartQuery, GetCartQueryVariables>(GetCartDocument, options);
-        }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetCartQuery, GetCartQueryVariables>(GetCartDocument, options);
+}
 export type GetCartQueryHookResult = ReturnType<typeof useGetCartQuery>;
 export type GetCartLazyQueryHookResult = ReturnType<typeof useGetCartLazyQuery>;
 export type GetCartQueryResult = Apollo.QueryResult<GetCartQuery, GetCartQueryVariables>;

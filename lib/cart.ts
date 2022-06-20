@@ -1,4 +1,4 @@
-import { CartItem, PrismaClient } from "@prisma/client";
+import { PrismaClient, CartItem } from "@prisma/client";
 import { Stripe } from "stripe";
 import { Product } from "./products";
 
@@ -6,8 +6,8 @@ export const currencyCode = "USD";
 
 export async function findOrCreateCart(prisma: PrismaClient, id: string) {
     let cart = await prisma.cart.findUnique({
-        where: { id }
-    })
+        where: { id },
+    });
     if (!cart) {
         cart = await prisma.cart.create({
             data: { id },
@@ -25,7 +25,7 @@ export function validateCartItems(
     for (const item of cartItems) {
         const product = inventory.find(({ id }) => id === item.id);
         if (!product) {
-            throw new Error(`Item with ${item.id} is not on the inventory`);
+            throw new Error(`Item with id ${item.id} is not on the inventory`);
         }
         checkoutItems.push({
             quantity: item.quantity,
@@ -40,5 +40,6 @@ export function validateCartItems(
             },
         });
     }
+
     return checkoutItems;
 }
